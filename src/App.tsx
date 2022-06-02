@@ -1,4 +1,5 @@
-import React,{useState} from 'react';
+//@ts-nocheck
+import React,{useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -9,12 +10,21 @@ interface kanjiProps {
 }
 
 function App() {
-  const state: kanjiProps = FetchKanji()
+  const [kanji,setKanji]=useState("")
+  const [kanjiSearch,setKanjiSearch]=useState("")
+  const {kanjiData} = FetchKanji(kanjiSearch)
+  console.log(kanjiData)
 
   return (
-    <div className="App">
+    <div className="App" style={{display: "flex",flexDirection: "column",alignItems: "center"}}>
+      <form onSubmit={(event)=>{
+        event?.preventDefault()
+        setKanjiSearch(kanji)}}>
+        <input type="text" onChange={(event)=>setKanji(event.target.value)} />
+      </form>
+
+      {kanjiData.kun_readings && kanjiData.kun_readings.map((rd)=><p>{rd}</p>)}
       
-      {state.kun_readings}
     </div>
   );
 }

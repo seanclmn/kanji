@@ -1,26 +1,32 @@
 import React,{useEffect,useState} from 'react'
 
-function FetchKanji() {
+function FetchKanji(kanji:string) {
 
-  const url = 'https://kanjiapi.dev/v1/kanji/蛍'
-  const [kanjiData,setKanjiData]=useState({kun_readings: ""})
+  const url = `https://kanjiapi.dev/v1/kanji/${kanji}`
+  const [kanjiData,setKanjiData]=useState({})
 
-  const fetchData = async () =>{
-    try {
-      const result = await fetch(url)
-      return await result.json()
-    }
-    catch {
-      console.log("ERROR ERROR ERROR")
-    }
-  }
+
   
   useEffect(()=>{
-    fetchData().then((res)=>setKanjiData({kun_readings: res.kun_readings}))
-  },[])
+    const fetchData = async () =>{
+      try{
+        const result = await fetch(url)
+        const data = await result.json()
+        return data
+      }
+      catch{
+        return []
+      }
+    }
+
+    fetchData().then((res)=>{
+      console.log(res)
+      setKanjiData(res)
+    })
+  },[kanji])
 
   return (
-    kanjiData
+    {kanjiData}
   )
 }
 
