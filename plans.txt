@@ -1,0 +1,17 @@
+Idea for a kanji app
+
+Kanji dictionary
+	- search for kanji, get different readings, meanings, etc.
+
+Kanji quiz
+	- Separated by grade level. Timed quiz where you guess the kanji reading
+	- Idea for mobile: draw kanji?
+
+Tech stack
+
+User info propagated with redux store?
+
+
+Store holds user info and handles some of the prviate routing logic
+
+Using the data in the store, components use the custom hooks to call up data

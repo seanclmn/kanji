@@ -1,9 +1,13 @@
-import React,{useEffect,useState} from 'react'
+import {useEffect,useState} from 'react'
 
 function FetchKanji(kanji:string) {
 
+  interface dataResult {
+    kun_readings: string[]
+  }
+
   const url = `https://kanjiapi.dev/v1/kanji/${kanji}`
-  const [kanjiData,setKanjiData]=useState({})
+  const [kanjiData,setKanjiData]=useState<dataResult>({kun_readings: [""]})
 
 
   
