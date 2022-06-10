@@ -1,8 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit'
+import changeKanji from '../features/kanji/kanjiSlice'
 
-const store = configureStore({
+export const store = configureStore({
 	reducer: {
-		kanjis: newReducer
+		kanji: changeKanji
 
 	}
 	
