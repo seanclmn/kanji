@@ -17,7 +17,7 @@ export const kanjiSlice = createSlice({
   }
 })
 
-export const changeKanji = kanjiSlice.actions
+export const {changeKanji} = kanjiSlice.actions
  
 export const selectKanji = (state: RootState) => state.kanji
 
