@@ -24,7 +24,6 @@ function FetchKanji(kanji:string) {
     }
 
     fetchData().then((res)=>{
-      console.log(res)
       setKanjiData(res)
     })
   },[kanji])

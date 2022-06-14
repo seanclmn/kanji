@@ -7,6 +7,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import FetchKanji from './hooks/FetchKanji'
+import FetchGradeKanji from './hooks/FetchGradeKanji'
 
 function App() {
   const kanjiStore: {kanji: string} = useSelector(selectKanji)
@@ -15,6 +16,8 @@ function App() {
   const [kanji,setKanji]=useState("")
   const {kanjiData} = FetchKanji(kanjiStore.kanji)
 
+	const {kanjilist} = FetchGradeKanji(1)
+	console.log(kanjilist)
   return (
     <div className="App" style={{display: "flex",flexDirection: "column",alignItems: "center"}}>
       <p>{kanjiStore.kanji}</p>
