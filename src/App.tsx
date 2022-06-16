@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React,{useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { selectKanji, changeKanji } from './features/kanji/kanjiSlice';
@@ -16,8 +15,8 @@ function App() {
   const [kanji,setKanji]=useState("")
   const {kanjiData} = FetchKanji(kanjiStore.kanji)
 
-	const {kanjilist} = FetchGradeKanji(1)
-	console.log(kanjilist)
+	const {gradeKanjiData} = FetchGradeKanji(1)
+	console.log(gradeKanjiData)
   return (
     <div className="App" style={{display: "flex",flexDirection: "column",alignItems: "center"}}>
       <p>{kanjiStore.kanji}</p>
