@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { useSelector } from 'react-redux';
 import { selectKanji, changeKanji } from './features/kanji/kanjiSlice';
 import { useAppDispatch } from './app/hooks';
+import {KanjiCard} from './components/KanjiCard'
 import logo from './logo.svg';
 import './App.css';
 
@@ -27,7 +28,7 @@ function App() {
           
         <input type="text" onChange={(event)=>setKanji(event.target.value)} />
       </form>
-
+			<KanjiCard kanji={kanjiStore.kanji}/>
       {/* {kanjiData.kun_readings && kanjiData.kun_readings.map((rd)=><p key={rd}>{rd}</p>)} */}
       
     </div>
