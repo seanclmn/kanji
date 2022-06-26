@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card, Button, Elevation  } from '@blueprintjs/core'
 
 interface Props {
@@ -15,7 +14,5 @@ export const KanjiCard = ({kanji}: Props) => {
 			</Card>
 			<p>KanjiCard</p>
 		</div>)
-	
+
 }
-
-
