@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@blueprintjs/core": "^4.5.1",
+    "@mantine/core": "^4.2.11",
+    "@mantine/hooks": "^4.2.11",
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -12,6 +14,7 @@
     "@types/node": "^16.11.36",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
+    "antd": "^4.21.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-redux": "^8.0.2",

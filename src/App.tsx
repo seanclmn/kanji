@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectKanji, changeKanji } from './features/kanji/kanjiSlice';
 import { useAppDispatch } from './app/hooks';
 import {KanjiCard} from './components/KanjiCard'
+import QuizPage from './pages/QuizPage'
 import logo from './logo.svg';
 import './App.css';
 
@@ -37,7 +38,7 @@ function App() {
 
     <Routes>
       <Route path="/" element={<p>home</p>}/>
-      <Route path="something" element={<p>something</p>}/>
+      <Route path="quiz" element={<QuizPage/>}/>
     </Routes>
   );
 }
