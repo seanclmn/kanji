@@ -5,6 +5,7 @@ import { selectKanji, changeKanji } from './features/kanji/kanjiSlice';
 import { useAppDispatch } from './app/hooks';
 import {KanjiCard} from './components/KanjiCard'
 import QuizPage from './pages/QuizPage'
+import Home from './pages/Home'
 import logo from './logo.svg';
 import './App.css';
 
@@ -37,7 +38,7 @@ function App() {
 
 
     <Routes>
-      <Route path="/" element={<p>home</p>}/>
+      <Route path="/" element={<Home/>}/>
       <Route path="quiz" element={<QuizPage/>}/>
     </Routes>
   );

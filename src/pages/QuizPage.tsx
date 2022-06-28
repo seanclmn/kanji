@@ -1,20 +1,13 @@
-import {Layout} from 'antd'
-const { Header, Footer, Sider, Content } = Layout;
+ import { createStyles, Text, Card, RingProgress, Group } from '@mantine/core';
 
 
 const QuizPage = () =>{
   return(
+    <div>
 
-      <Layout>
-      <Header>header</Header>
-      <Layout>
-        <Sider>left sidebar</Sider>
-        <Content>main content</Content>
-        <Sider>right sidebar</Sider>
-      </Layout>
-      <Footer>footer</Footer>
-      </Layout>)
+    </div>
 
+    )
 }
 
 export default QuizPage
