@@ -22,6 +22,8 @@ const Home = () =>{
         })}
       >
         <QuizCard progress={90}/>
+
+        <div className="w-[100px] h-[100px] bg-gray-200"><p>hello</p></div>
       </AppShell>
     );
 
