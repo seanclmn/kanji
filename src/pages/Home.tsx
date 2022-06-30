@@ -1,14 +1,25 @@
 import { Title, AppShell, Navbar, Header } from '@mantine/core';
 import QuizCard from '../components/QuizCard'
+import NavbarSection from '../components/NavbarSection'
 
 const Home = () =>{
 
   return (
       <AppShell
-        padding="md"
         navbar={
-          <Navbar width={{ base: 300 }} height={500} p="xs">
-            {/* Navbar content */}
+          <Navbar width={{ base: 300 }} height={500}>
+            <Navbar.Section className="cursor-pointer hover:bg-gray-200">
+              <NavbarSection title={"Quiz"} link="/quiz"/>
+            </Navbar.Section>
+
+            <Navbar.Section className="cursor-pointer hover:bg-gray-200">
+              <NavbarSection title={"Quiz"} link="/quiz"/>
+            </Navbar.Section>
+
+            <Navbar.Section className="cursor-pointer hover:bg-gray-200">
+              <NavbarSection title={"Quiz"} link="/quiz"/>
+            </Navbar.Section>
+
           </Navbar>
         }
         header={

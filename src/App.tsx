@@ -38,8 +38,9 @@ function App() {
 
 
     <Routes>
-      <Route path="/" element={<Home/>}/>
-      <Route path="quiz" element={<QuizPage/>}/>
+      <Route path="/" element={<Home/>}>
+        <Route path="quiz" element={<QuizPage/>}/>
+      </Route>
     </Routes>
   );
 }
