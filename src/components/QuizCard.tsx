@@ -4,10 +4,11 @@ import ProgressCircle from './ProgressCircle'
 
 interface QuizCardProps {
   progress: number
+	color: string
 }
 
 
-const QuizCard = ({progress}: QuizCardProps) =>{
+const QuizCard = ({progress, color}: QuizCardProps) =>{
 
   return(
 
@@ -15,10 +16,14 @@ const QuizCard = ({progress}: QuizCardProps) =>{
       <div></div>
 
       <div >
-        <ProgressCircle
-          progress={90}
-        />
-
+     		<RingProgress
+        	sections={[{ value: progress, color: color }]}
+        	label={
+          	<Text color={color} weight={700} align="center" size="xl">
+          	  40%
+          	</Text>
+        	}
+      	/>
       </div>
     </Card>
   )

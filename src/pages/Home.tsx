@@ -1,13 +1,19 @@
 import { Title, AppShell, Navbar, Header } from '@mantine/core';
+import { Link } from 'react-router-dom'
 import QuizCard from '../components/QuizCard'
+import QuizesPage from '../pages/QuizesPage'
 import NavbarSection from '../components/NavbarSection'
 
 const Home = () =>{
 
   return (
       <AppShell
+        className="h-screen"
         navbar={
-          <Navbar width={{ base: 300 }} height={500}>
+          <Navbar
+            width={{ base: 300 }}
+            height="100vh"
+            >
             <Navbar.Section className="cursor-pointer hover:bg-gray-200">
               <NavbarSection title={"Quiz"} link="/quiz"/>
             </Navbar.Section>
@@ -24,7 +30,12 @@ const Home = () =>{
         }
         header={
           <Header height={60} p="xs">
-            <Title>Kanji</Title>
+            <Link
+              to="/"
+              className="no-underline text-black"
+              >
+              <Title>Kanji</Title>
+            </Link>
           </Header>
         }
 
@@ -32,10 +43,8 @@ const Home = () =>{
           main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
         })}
       >
-        <QuizCard progress={90}/>
-
-        <div className="w-[100px] h-[100px] bg-gray-200"><p>hello</p></div>
-      </AppShell>
+  	    
+			</AppShell>
     );
 
 }

@@ -4,7 +4,7 @@
 const QuizPage = () =>{
   return(
     <div>
-
+			hello
     </div>
 
     )
