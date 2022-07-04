@@ -1,4 +1,4 @@
- import { createStyles, Text, Card, RingProgress, Group } from '@mantine/core';
+import { createStyles, Text, Card, RingProgress, Group } from '@mantine/core';
 
 
 const QuizPage = () =>{

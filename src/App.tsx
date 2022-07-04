@@ -4,13 +4,14 @@ import { useSelector } from 'react-redux';
 import { selectKanji, changeKanji } from './features/kanji/kanjiSlice';
 import { useAppDispatch } from './app/hooks';
 import {KanjiCard} from './components/KanjiCard'
-import QuizPage from './pages/QuizPage'
+import QuizzesPage from './pages/QuizzesPage'
 import Home from './pages/Home'
 import logo from './logo.svg';
 import './App.css';
 
 import FetchKanji from './hooks/FetchKanji'
 import FetchGradeKanji from './hooks/FetchGradeKanji'
+import QuizPage from './pages/QuizPage';
 
 function App() {
   // const kanjiStore: {kanji: string} = useSelector(selectKanji)
@@ -39,7 +40,14 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Home/>}>
-        <Route path="quiz" element={<QuizPage/>}/>
+        <Route path="quizzes" element={<QuizzesPage/>}/>
+
+        <Route path="/quiz" element={<QuizPage/>}>
+          <Route path=":levelquiz" element={<QuizPage/>}/>
+        </Route>
+
+          
+
       </Route>
     </Routes>
   );

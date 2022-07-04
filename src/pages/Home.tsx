@@ -1,49 +1,42 @@
-import { Title, AppShell, Navbar, Header } from '@mantine/core';
-import { Link } from 'react-router-dom'
+import { Title, AppShell, Navbar, Header, ScrollArea } from '@mantine/core';
+import { Link, Outlet } from 'react-router-dom'
 import QuizCard from '../components/QuizCard'
-import QuizesPage from '../pages/QuizesPage'
+import QuizzesPage from './QuizzesPage'
 import NavbarSection from '../components/NavbarSection'
 
 const Home = () =>{
 
   return (
       <AppShell
-        className="h-screen"
+        className="h-[100%]"
+        fixed
         navbar={
           <Navbar
             width={{ base: 300 }}
             height="100vh"
-            >
-            <Navbar.Section className="cursor-pointer hover:bg-gray-200">
-              <NavbarSection title={"Quiz"} link="/quiz"/>
-            </Navbar.Section>
-
-            <Navbar.Section className="cursor-pointer hover:bg-gray-200">
-              <NavbarSection title={"Quiz"} link="/quiz"/>
-            </Navbar.Section>
-
-            <Navbar.Section className="cursor-pointer hover:bg-gray-200">
-              <NavbarSection title={"Quiz"} link="/quiz"/>
-            </Navbar.Section>
-
-          </Navbar>
-        }
-        header={
-          <Header height={60} p="xs">
-            <Link
+            >        
+            <div className='py-5 pl-4'>
+              <Link
               to="/"
               className="no-underline text-black"
               >
-              <Title>Kanji</Title>
-            </Link>
-          </Header>
+                <Title>Kanji</Title>
+              </Link>
+            </div>
+            <Navbar.Section >
+              <NavbarSection title={"Quiz"} link="/quizzes"/>
+              <NavbarSection title={"Quiz"} link="/quizzes"/>
+              <NavbarSection title={"Quiz"} link="/quizzes"/>
+            </Navbar.Section>
+
+          </Navbar>
         }
 
         styles={(theme) => ({
           main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
         })}
       >
-  	    
+          <Outlet  />
 			</AppShell>
     );
 
