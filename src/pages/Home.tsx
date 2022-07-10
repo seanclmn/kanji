@@ -1,18 +1,27 @@
+import { useState } from 'react'
 import { Title, AppShell, Navbar, Header, ScrollArea } from '@mantine/core';
 import { Link, Outlet } from 'react-router-dom'
 import QuizCard from '../components/QuizCard'
 import QuizzesPage from './QuizzesPage'
 import NavbarSection from '../components/NavbarSection'
 
+
+
 const Home = () =>{
+
+  const [opened, setOpened] = useState(false);
 
   return (
       <AppShell
+        navbarOffsetBreakpoint="sm" 
+
         className="h-[100%]"
         fixed
         navbar={
           <Navbar
-            width={{ base: 300 }}
+            hiddenBreakpoint="sm"
+            hidden={!opened}
+            width={{ sm: 250, lg: 250 }}
             height="100vh"
             >        
             <div className='py-5 pl-4'>

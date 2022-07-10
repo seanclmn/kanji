@@ -3,8 +3,10 @@ import { createStyles, Text, Card, RingProgress, Group } from '@mantine/core';
 
 const QuizPage = () =>{
   return(
-    <div>
-			hello
+    <div className="w-[100%] h-[100%] bg-white">
+			<div>
+        henlo
+      </div>
     </div>
 
     )
