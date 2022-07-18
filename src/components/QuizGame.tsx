@@ -4,16 +4,10 @@ import QuizAnswerButton from './QuizAnswerButton'
 
 interface QuizGameProps {
   question: string
-  answer: string
   answers: string[]
 }
 
-function QuizGame({question,answer,answers}:QuizGameProps) {
-  let {levelquiz} = useParams()
-  console.log(levelquiz)
-
-  const correct = () => 
-
+function QuizGame({question, answers}:QuizGameProps) {
 
   return (
     <div className="mx-auto w-[70%]">
