@@ -33,23 +33,17 @@ function QuizContainer() {
 
   const endQuiz = () => {
     setStage("end")
-  }
-
-  const nextQuestion = () => {
-    setQuestionIndex(questionIndex+1)
-  }
-    
-  
+  }  
 
   return (
     <>
       <div>{levelquiz}</div>
       {stage=="start" && <QuizStart startQuiz={startQuiz}/>}
       
-      {stage=="game" && <QuizGame question={questions[questionIndex].question} answers={questions[questionIndex].answers}/>}
+      {stage=="game" && <QuizGame questions={questions} endQuiz={endQuiz}/>}
 
       {stage=="end" && <p>end</p>}
-      {questionIndex < questions.length-1 ? <Button onClick={()=>nextQuestion()}>Next</Button>: <Button onClick={()=>endQuiz()}>Finish</Button>}
+      
       
     </>
   )
