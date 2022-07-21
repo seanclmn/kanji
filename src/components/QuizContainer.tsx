@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {useParams} from 'react-router-dom'
 
+import QuizEnd from './QuizEnd'
 import QuizGame from './QuizGame'
 import QuizStart from './QuizStart'
 import {Button} from '@mantine/core'
@@ -37,12 +38,11 @@ function QuizContainer() {
 
   return (
     <>
-      <div>{levelquiz}</div>
       {stage=="start" && <QuizStart startQuiz={startQuiz}/>}
       
       {stage=="game" && <QuizGame questions={questions} endQuiz={endQuiz}/>}
 
-      {stage=="end" && <p>end</p>}
+      {stage=="end" && <QuizEnd/>}
       
       
     </>
