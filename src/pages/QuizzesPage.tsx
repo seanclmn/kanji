@@ -2,16 +2,14 @@ import { ScrollArea } from '@mantine/core'
 import QuizCard from '../components/QuizCard'
 import QuizPage from '../components/QuizCard'
 
+import { useSelector } from 'react-redux';
+import { getUserData, changeScore } from '../features/kanji/kanjiSlice';
+import { useAppDispatch } from '../app/hooks';
+
 const QuizesPage = () => {
-
-	const Quizzes = [
-		{color: '#68b5e8', progress: 90, level: 1, id: 1},
-		{color: '#68b5e8', progress: 80, level: 2, id: 2},
-		{color: '#68b5e8', progress: 20, level: 3, id: 3},
-		{color: '#68b5e8', progress: 50, level: 4, id: 4},
-		{color: '#68b5e8', progress: 100, level: 5, id: 5},
-	]
-
+	const dispatch = useAppDispatch();
+	const dataStore = useSelector(getUserData)
+	const Quizzes = dataStore.userData.userData.kanjiTopScores.map((score,kanjiLevel)=>({color: '#68b5e8', progress: score, level: kanjiLevel , id: kanjiLevel}))
 
 	return(
 		<>

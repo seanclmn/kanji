@@ -37,7 +37,7 @@ export const userDataSlice = createSlice({
 
 export const {changeScore} = userDataSlice.actions
  
-export const selectKanji = (state: RootState) => state.kanji
+export const getUserData = (state: RootState) => state
 
 
 export default userDataSlice.reducer

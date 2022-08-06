@@ -1,9 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit'
-import changeKanji from '../features/kanji/kanjiSlice'
+import changeScore from '../features/kanji/kanjiSlice'
 
 export const store = configureStore({
 	reducer: {
-		kanji: changeKanji
+		userData: changeScore
 
 	}
 	

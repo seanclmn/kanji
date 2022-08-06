@@ -1,32 +1,29 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
 
 import QuizEnd from './QuizEnd'
 import QuizGame from './QuizGame'
 import QuizStart from './QuizStart'
-import {Button} from '@mantine/core'
 
+import { changeScore } from '../features/kanji/kanjiSlice';
+import { useAppDispatch } from '../app/hooks';
+
+import { FetchQuizAnswers } from '../hooks/FetchQuizAnswers'
+
+export type LevelQuizProps = {
+  levelquiz: string
+}
+
+export interface QuestionProps {
+  question: string
+  answers: string[]
+}
 
 function QuizContainer() {
-  let {levelquiz} = useParams()
+  const dispatch = useAppDispatch();
+  let {levelquiz} = useParams<LevelQuizProps>()
   const [stage,setStage]=useState("start")
-  const [questionIndex,setQuestionIndex]=useState(0)
-
-
-  const questions = [
-    { 
-      question: "here's a question son",
-      answers: ["test","womp","wadda ya want", "nah"]
-    },
-    {
-      question: "here's another one",
-      answers: ["one","two","three","four"]
-    },
-    {
-      question: "here's da last one",
-      answers: ["heh","hehe","hehehe","hehehehe"]
-    }
-  ]
+  const questions = FetchQuizAnswers(parseFloat(String(levelquiz))+1,4)
 
   const startQuiz = () => {
     setStage("game")
@@ -34,15 +31,16 @@ function QuizContainer() {
 
   const endQuiz = () => {
     setStage("end")
+    dispatch(changeScore({level: parseFloat(String(levelquiz))+1, newScore:90}))
   }  
 
   return (
     <>
-      {stage=="start" && <QuizStart startQuiz={startQuiz}/>}
+      {stage==="start" && <QuizStart startQuiz={startQuiz}/>}
       
-      {stage=="game" && <QuizGame questions={questions} endQuiz={endQuiz}/>}
+      {stage==="game" && <QuizGame questions={questions} endQuiz={endQuiz}/>}
 
-      {stage=="end" && <QuizEnd/>}
+      {stage==="end" && <QuizEnd/>}
       
       
     </>
