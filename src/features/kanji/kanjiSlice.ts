@@ -2,24 +2,42 @@ import {createSlice,PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from '../../app/store'
 
 export interface initialStateProps {
-  kanji: string
+  userData: userData
 }
 
-const initialState: initialStateProps = {kanji: "川"}
+export interface userData {
+  userName: string
+  kanjiTopScores: [number,number,number,number,number,number]
+}
 
-export const kanjiSlice = createSlice({
-  name: 'kanji',
+export interface ChangeScoreProps {
+  level: number
+  newScore: number
+}
+
+
+
+const initialState: initialStateProps = {
+  userData: {
+    userName: "sean",
+    kanjiTopScores: [10,10,10,10,10,10]
+
+  },
+}
+
+export const userDataSlice = createSlice({
+  name: 'userData',
   initialState,
   reducers: {
-    changeKanji: (state, action: PayloadAction<string>) =>{
-      state.kanji = action.payload
+    changeScore: (state, action: PayloadAction<ChangeScoreProps>) =>{
+      state.userData.kanjiTopScores[action.payload.level-1] = action.payload.newScore
     }
   }
 })
 
-export const {changeKanji} = kanjiSlice.actions
+export const {changeScore} = userDataSlice.actions
  
 export const selectKanji = (state: RootState) => state.kanji
 
 
-export default kanjiSlice.reducer
+export default userDataSlice.reducer

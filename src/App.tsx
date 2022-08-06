@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import {Routes, Route} from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import { selectKanji, changeKanji } from './features/kanji/kanjiSlice';
+import { selectKanji, changeScore } from './features/kanji/kanjiSlice';
 import { useAppDispatch } from './app/hooks';
 import {KanjiCard} from './components/KanjiCard'
 import QuizGame from './components/QuizGame'
