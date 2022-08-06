@@ -23,7 +23,7 @@ function QuizContainer() {
   const dispatch = useAppDispatch();
   let {levelquiz} = useParams<LevelQuizProps>()
   const [stage,setStage]=useState("start")
-  const questions = FetchQuizAnswers(parseFloat(String(levelquiz))+1,4)
+  const questions = FetchQuizAnswers(parseFloat(String(levelquiz)),4)
 
   const startQuiz = () => {
     setStage("game")

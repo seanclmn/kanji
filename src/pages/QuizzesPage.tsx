@@ -9,7 +9,7 @@ import { useAppDispatch } from '../app/hooks';
 const QuizesPage = () => {
 	const dispatch = useAppDispatch();
 	const dataStore = useSelector(getUserData)
-	const Quizzes = dataStore.userData.userData.kanjiTopScores.map((score,kanjiLevel)=>({color: '#68b5e8', progress: score, level: kanjiLevel , id: kanjiLevel}))
+	const Quizzes = dataStore.userData.userData.kanjiTopScores.map((score,kanjiLevel)=>({color: '#68b5e8', progress: score, level: kanjiLevel+1 , id: kanjiLevel+1}))
 
 	return(
 		<>
