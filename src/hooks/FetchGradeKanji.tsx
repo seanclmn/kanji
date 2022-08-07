@@ -25,6 +25,8 @@ function FetchGradeKanji(grade:number) {
     })
   },[grade])
 
+  console.log(gradeKanjiData)
+
   return (
     {gradeKanjiData}
   )

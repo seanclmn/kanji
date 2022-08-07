@@ -14,11 +14,6 @@ export type LevelQuizProps = {
   levelquiz: string
 }
 
-export interface QuestionProps {
-  question: string
-  answers: string[]
-}
-
 function QuizContainer() {
   const dispatch = useAppDispatch();
   let {levelquiz} = useParams<LevelQuizProps>()
@@ -31,9 +26,10 @@ function QuizContainer() {
 
   const endQuiz = () => {
     setStage("end")
-    dispatch(changeScore({level: parseFloat(String(levelquiz))+1, newScore:90}))
+    dispatch(changeScore({level: parseFloat(String(levelquiz)), newScore:90}))
   }  
 
+  if(!questions) return null
   return (
     <>
       {stage==="start" && <QuizStart startQuiz={startQuiz}/>}

@@ -3,12 +3,13 @@ import {Button} from '@mantine/core'
 
 interface QuizAnswerButtonProps {
   text: string
+  answerQuestion: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function QuizAnswerButton({text}: QuizAnswerButtonProps) {
+function QuizAnswerButton({text,answerQuestion}: QuizAnswerButtonProps) {
 
   return (
-    <Button>{text}</Button>
+    <Button onClick={answerQuestion}>{text}</Button>
   )
 }
 
