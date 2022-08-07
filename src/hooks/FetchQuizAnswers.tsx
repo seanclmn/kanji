@@ -1,16 +1,54 @@
-import {useEffect,useState } from 'react'
-
 // Hooks
+import { useEffect } from 'react'
+import { useState } from 'react'
 import FetchGradeKanji from './FetchGradeKanji'
 
 
 export interface QuestionProps {
   question: string
-  answers: string[]
+  answers: AnswerProps[]
 }
 
+export interface AnswerProps {
+  option: string
+  correct:boolean
+}
 
-export function shuffle(array:string[]) {
+export const fetchWrongAnswers = (answer:string,answers:AnswerProps[],kanjiArray:string[],answerLength:number) => {
+  const wrongAnswer:AnswerProps = {option: kanjiArray[Math.floor(Math.random()*kanjiArray.length)],correct: false}
+  
+  if(wrongAnswer.option!==answer){
+    answers.push(wrongAnswer)
+  }
+
+  if(answers.length < answerLength-1){
+    fetchWrongAnswers(answer,answers,kanjiArray,answerLength)
+  }
+  else {
+    answers.push({option: answer, correct:true})
+  }
+  return(shuffle(answers))
+}
+
+export const fetchAnswerOptions = (kanjiLevel:number,answerLength:number,numberOfQuestions:number) => {
+
+  const questionsArray:QuestionProps[] = []
+  const kanjiArray = FetchGradeKanji(kanjiLevel).gradeKanjiData
+  if(kanjiArray.length > 0) {
+    for(let i=0;i<numberOfQuestions;i++) {
+      const correctAnswer: string = kanjiArray[Math.floor(Math.random()*kanjiArray.length)]
+      questionsArray.push({ 
+        question: "here's a question son",
+        answers: fetchWrongAnswers(correctAnswer,[],kanjiArray,answerLength)
+      })
+    }
+  }
+
+  return questionsArray
+
+}
+
+function shuffle(array:AnswerProps[]) {
   let currentIndex = array.length,  randomIndex;
 
   // While there remain elements to shuffle.
@@ -28,47 +66,6 @@ export function shuffle(array:string[]) {
   return array;
 }
 
-
-export const fetchWrongAnswers = (answer: string,answers:string[],kanjiArray:string[],answerLength:number) => {
-  const wrongAnswer = kanjiArray[Math.floor(Math.random()*kanjiArray.length)]
-  console.log(answer)
-  
-  if(wrongAnswer!==answer){
-    answers.push(wrongAnswer)
-  }
-
-  if(answers.length < answerLength-1){
-    fetchWrongAnswers(answer,answers,kanjiArray,answerLength)
-  }
-  else {
-    answers.push(answer)
-    return(answers)
-  }
-  return(answers)
-}
-
-export const fetchAnswerOptions = (kanjiLevel:number,answerLength:number,numberOfQuestions:number) => {
-
-  const questionsArray:QuestionProps[] = []
-  const kanjiArray = FetchGradeKanji(kanjiLevel).gradeKanjiData
-
-  console.log(kanjiArray)
-  if(kanjiArray.length > 0) {
-    for(let i=0;i<numberOfQuestions;i++) {
-      console.log(kanjiArray)
-      const correctAnswer: string = kanjiArray[Math.floor(Math.random()*kanjiArray.length)]
-      questionsArray.push({ 
-        question: "here's a question son",
-        answers: fetchWrongAnswers(correctAnswer,[],kanjiArray,answerLength)
-      })
-    }
-  }
-
-  return questionsArray
-
-}
-
 export const FetchQuizAnswers = (kanjiLevel:number,questions:number) => {
-
   return(fetchAnswerOptions(kanjiLevel,questions,4))
 }

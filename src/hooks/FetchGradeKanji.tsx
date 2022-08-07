@@ -20,12 +20,9 @@ function FetchGradeKanji(grade:number) {
     }
 
     fetchData().then((res)=>{
-      console.log(res)
       setGradeKanjiData(res)
     })
   },[grade])
-
-  console.log(gradeKanjiData)
 
   return (
     {gradeKanjiData}
