@@ -3,6 +3,24 @@ const router = express.Router()
 
 const Kanji = require('../../models/kanjimodel')
 
+
+// MISC FUNCTIONS
+
+const shuffle = (array) => {
+	let currentIndex = array.length,  randomIndex;
+
+	while (currentIndex != 0) {
+		randomIndex = Math.floor(Math.random() * currentIndex);
+		currentIndex--;
+		[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+	}
+
+	return array;
+}
+
+
+// ROUTER
+
 router.get('/test', (req,res) => res.send('this is a test'))
 
 router.get('/fullkanjilist', (req,res) => {
@@ -27,9 +45,36 @@ router.get('/kanjiquestions/:grade/:length',(req,res)=>{
 		}
 		return(indices)
 	}
+
+	const formatQuestion = (kanjiList,kanjiObject) => {
+		console.log(kanjiList)
+		const index = kanjiList.indexOf(kanjiObject)
+		var incorrectKanji = kanjiList
+		incorrectKanji.splice(index,1)
+		var options = []
+
+		for(let i = 0;i<3;i++){
+			randomIncorrectKanjiIndex = Math.floor(Math.random()*kanjiList.length)
+			console.log("incorrect kanjiiii")
+			console.log(incorrectKanji)
+			options.push(
+				{optionName: incorrectKanji[randomIncorrectKanjiIndex].kanji, correct: false}
+			)
+			incorrectKanji.splice(index,1)
+		}
+		options.push({optionName: kanjiObject.kanji, correct: true})
+
+		return({correctKanji: kanjiObject, options: shuffle(options)})
+	}
+
+	const createQuestions = (kanjiList) => {
+		const filteredKanjiList = createIds(kanjiList.length).map(index=>kanjiList[index])
+		return(filteredKanjiList.map(kanji=>formatQuestion(kanjiList,kanji)))
+
+	}
 	
 	Kanji.find({"grade": req.params.grade})
-		.then(kanji => res.json(createIds(kanji.length).map(index=>kanji[index])))
+		.then(kanji => res.json(createQuestions(kanji)))
 		.catch(err => console.log(err.message))
 
 })
