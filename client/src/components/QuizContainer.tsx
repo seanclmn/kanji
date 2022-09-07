@@ -8,7 +8,7 @@ import QuizStart from './QuizStart'
 import { changeScore } from '../features/kanji/kanjiSlice';
 import { useAppDispatch } from '../app/hooks';
 
-import { FetchQuizAnswers } from '../hooks/FetchQuizAnswers'
+import { FetchQuizQuestions } from '../hooks/FetchQuizQuestions'
 
 export type LevelQuizProps = {
   levelquiz: string
@@ -18,7 +18,9 @@ function QuizContainer() {
   const dispatch = useAppDispatch();
   let {levelquiz} = useParams<LevelQuizProps>()
   const [stage,setStage]=useState("start")
-  const questions = FetchQuizAnswers(parseFloat(String(levelquiz)),4)
+  console.log(levelquiz)
+  const questions = FetchQuizQuestions(parseFloat(String(levelquiz)),4)
+  console.log(questions)
 
   const startQuiz = () => {
     setStage("game")
@@ -28,8 +30,8 @@ function QuizContainer() {
     setStage("end")
     dispatch(changeScore({level: parseFloat(String(levelquiz)), newScore:90}))
   }  
-
-  if(!questions) return null
+  console.log(!questions)
+  if(!questions.length) return(<p>loading...</p>)
   return (
     <>
       {stage==="start" && <QuizStart startQuiz={startQuiz}/>}
@@ -37,8 +39,6 @@ function QuizContainer() {
       {stage==="game" && <QuizGame questions={questions} endQuiz={endQuiz}/>}
 
       {stage==="end" && <QuizEnd/>}
-      
-      
     </>
   )
 }

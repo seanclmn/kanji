@@ -6,6 +6,9 @@ const Kanji = require('../../models/kanjimodel')
 
 // MISC FUNCTIONS
 
+
+
+// Suffle an Array
 const shuffle = (array) => {
 	let currentIndex = array.length,  randomIndex;
 
@@ -17,6 +20,12 @@ const shuffle = (array) => {
 
 	return array;
 }
+
+// Pick random element of an array
+
+const randomElement = (array) => array[Math.floor(Math.random()*array.length)]; 
+
+
 
 
 // ROUTER
@@ -64,7 +73,9 @@ router.get('/kanjiquestions/:grade/:length',(req,res)=>{
 		}
 		options.push({optionName: kanjiObject.kanji, correct: true})
 
-		return({correctKanji: kanjiObject, options: shuffle(options)})
+		const randomQuestionType = randomElement(['readings_on','readings_kun','meanings'])
+
+		return({question: [randomQuestionType,randomElement(kanjiObject[randomQuestionType])], options: shuffle(options)})
 	}
 
 	const createQuestions = (kanjiList) => {
