@@ -28,6 +28,18 @@ function QuizGame({questions, endQuiz}:QuizGameProps) {
   const [answered,setAnswered]=useState(true)
   const [colors,setColors]=useState(["blue","blue","blue","blue"])
 
+  const phraseQuestion = () => {
+    switch(questions[questionIndex].question[0]) {
+      case "readings_on":
+        return <h3 className="font-normal">{questionIndex+1}. Which kanji has an <b>on</b> reading of <b>{questions[questionIndex].question[1]}</b></h3 >
+      case "readings_kun":
+        return <h3 className="font-normal">{questionIndex+1}. Which kanji has a <b>kun</b> reading of <b>{questions[questionIndex].question[1]}</b></h3 >
+      case "meanings":
+        return <h3 className="font-normal">{questionIndex+1}. Which kanji has a meaning of <b>{questions[questionIndex].question[1]}</b></h3 >
+    }
+
+  }
+
   const nextQuestion = () => {
     setQuestionIndex(questionIndex+1)
     setAnswered(true)
@@ -50,7 +62,7 @@ function QuizGame({questions, endQuiz}:QuizGameProps) {
 
   return (
     <div className="mx-auto w-[70%]">
-      <p>{questions[questionIndex].question}</p>
+      {phraseQuestion()}
       <div className="grid grid-cols-2 gap-4">
         {questions[questionIndex].options.map((option,index)=> 
           <Button 
@@ -64,8 +76,21 @@ function QuizGame({questions, endQuiz}:QuizGameProps) {
       </div>
 
       <div className='flex flex-row justify-center my-[50px]'>
-        {questionIndex < questions.length-1 ? <Button size="md" disabled={answered} onClick={()=>nextQuestion()}>Next</Button>: <Button size="md" disabled={answered} onClick={()=>endQuiz()}>Finish</Button>}
-
+        {questionIndex < questions.length-1 ? 
+          <Button 
+            size="md" 
+            disabled={answered} 
+            onClick={()=>nextQuestion()}
+            >
+              Next
+            </Button>: 
+          <Button 
+            size="md" 
+            disabled={answered} 
+            onClick={()=>endQuiz()}
+          >
+            Finish
+          </Button>}
       </div>  
     </div>
  )

@@ -15,7 +15,7 @@ const Home = () =>{
       <AppShell
         navbarOffsetBreakpoint="sm" 
 
-        className="h-[100%]"
+        className="h-[100vh] p-0"
         fixed
         navbar={
           <Navbar
@@ -24,7 +24,9 @@ const Home = () =>{
             width={{ sm: 250, lg: 250 }}
             height="100vh"
             >        
-            <div className='py-5 pl-4'>
+            <div 
+              className='py-5 pl-4'
+              >
               <Link
               to="/"
               className="no-underline text-black"
@@ -42,7 +44,7 @@ const Home = () =>{
         }
 
         styles={(theme) => ({
-          main: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
+          main: { backgroundColor: theme.colors.gray[0] },
         })}
       >
           <Outlet  />

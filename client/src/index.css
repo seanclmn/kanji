@@ -4,4 +4,15 @@
 
 body{
    margin:0;
-  }
+
+}
+
+#root {
+   height: 100vh;
+
+}
+
+.mantine-AppShell-main {
+   padding-top: 0px;
+   padding-bottom: 0px;
+}

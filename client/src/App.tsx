@@ -15,11 +15,7 @@ function App() {
 
         <Route path="/quiz" element={<QuizPage/>}>
           <Route path=":levelquiz" element={<QuizContainer/>}/>
-
-          {/* <Route path=":levelquiz" element={<QuizGame question="hullo" answers={["hello", "bai","nope","noice"]}/>}/> */}
-        </Route>
-
-          
+        </Route>          
 
       </Route>
     </Routes>
