@@ -9,7 +9,9 @@ import {Button} from '@mantine/core'
 
 export interface QuizGameProps {
   questions: Question[]|string[]
+  correct: number
   endQuiz: Function
+  setCorrect: Function
 }
 
 export interface Question{
@@ -51,8 +53,10 @@ function QuizGame({questions, endQuiz}:QuizGameProps) {
       
       setAnswered(false)
       let newColors = colors
-      if(questions[questionIndex].options[index].correct)
+      if(questions[questionIndex].options[index].correct){
         newColors[index] = "green"
+        setCorrect(correct+1)
+        }
       else
         newColors[index] = "red"
 

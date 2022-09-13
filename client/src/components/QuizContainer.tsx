@@ -20,6 +20,7 @@ function QuizContainer() {
   const dispatch = useAppDispatch();
   let {levelquiz} = useParams<LevelQuizProps>()
   const [stage,setStage]=useState("start")
+  const [correct,setCorrect]=useState(0)
   console.log(levelquiz)
   const questions = FetchQuizQuestions(parseFloat(String(levelquiz)),10)
   console.log(questions)
@@ -59,7 +60,7 @@ function QuizContainer() {
     <div className='h-[100%]'>
       {stage==="start" && <QuizStart startQuiz={startQuiz} gradeLevel={levelquiz}/>}
       
-      {stage==="game" && <QuizGame questions={questions} endQuiz={endQuiz}/>}
+      {stage==="game" && <QuizGame correct= {correct} questions={questions} setCorrect={setCorrect} endQuiz={endQuiz}/>}
 
       {stage==="end" && <QuizEnd/>}
     </div>
