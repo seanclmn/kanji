@@ -56,7 +56,6 @@ router.get('/kanjiquestions/:grade/:length',(req,res)=>{
 	}
 
 	const formatQuestion = (kanjiList,kanjiObject) => {
-		console.log(kanjiList)
 		const index = kanjiList.indexOf(kanjiObject)
 		var incorrectKanji = kanjiList
 		incorrectKanji.splice(index,1)
@@ -64,8 +63,6 @@ router.get('/kanjiquestions/:grade/:length',(req,res)=>{
 
 		for(let i = 0;i<3;i++){
 			randomIncorrectKanjiIndex = Math.floor(Math.random()*kanjiList.length)
-			console.log("incorrect kanjiiii")
-			console.log(incorrectKanji)
 			options.push(
 				{optionName: incorrectKanji[randomIncorrectKanjiIndex].kanji, correct: false}
 			)

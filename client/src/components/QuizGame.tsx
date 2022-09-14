@@ -24,7 +24,7 @@ export interface OptionProps {
   optionName: string
 }
 
-function QuizGame({questions, endQuiz}:QuizGameProps) {
+function QuizGame({questions, correct, endQuiz, setCorrect}:QuizGameProps) {
   console.log(questions)
   const [questionIndex,setQuestionIndex]=useState(0)
   const [answered,setAnswered]=useState(true)
@@ -78,7 +78,7 @@ function QuizGame({questions, endQuiz}:QuizGameProps) {
               {option.optionName}
             </Button>)}
       </div>
-
+ 
       <div className='flex flex-row justify-center my-[50px]'>
         {questionIndex < questions.length-1 ? 
           <Button 

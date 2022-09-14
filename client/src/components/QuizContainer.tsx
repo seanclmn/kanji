@@ -22,7 +22,7 @@ function QuizContainer() {
   const [stage,setStage]=useState("start")
   const [correct,setCorrect]=useState(0)
   console.log(levelquiz)
-  const questions = FetchQuizQuestions(parseFloat(String(levelquiz)),10)
+  const questions = FetchQuizQuestions(parseFloat(String(levelquiz)),1)
   console.log(questions)
 
   const startQuiz = () => {
@@ -31,8 +31,10 @@ function QuizContainer() {
 
   const endQuiz = () => {
     setStage("end")
-    dispatch(changeScore({level: parseFloat(String(levelquiz)), newScore:90}))
+    dispatch(changeScore({level: parseFloat(String(levelquiz)), newScore:score*100}))
   }  
+
+  const score: number = correct/questions.length
   console.log(!questions)
   if(!questions.length){
     return(
@@ -62,7 +64,7 @@ function QuizContainer() {
       
       {stage==="game" && <QuizGame correct= {correct} questions={questions} setCorrect={setCorrect} endQuiz={endQuiz}/>}
 
-      {stage==="end" && <QuizEnd/>}
+      {stage==="end" && <QuizEnd quizScore={score} />}
     </div>
   )
 }

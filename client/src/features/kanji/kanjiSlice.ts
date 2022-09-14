@@ -20,7 +20,7 @@ export interface ChangeScoreProps {
 const initialState: initialStateProps = {
   userData: {
     userName: "sean",
-    kanjiTopScores: [10,10,10,10,10,10]
+    kanjiTopScores: [0,0,0,0,0,0]
 
   },
 }
@@ -30,7 +30,10 @@ export const userDataSlice = createSlice({
   initialState,
   reducers: {
     changeScore: (state, action: PayloadAction<ChangeScoreProps>) =>{
-      state.userData.kanjiTopScores[action.payload.level-1] = action.payload.newScore
+      const currentScore = state.userData.kanjiTopScores[action.payload.level-1]
+      if(action.payload.newScore > currentScore){
+        state.userData.kanjiTopScores[action.payload.level-1] = action.payload.newScore
+      }
     }
   }
 })

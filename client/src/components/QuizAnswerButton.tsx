@@ -1,7 +1,7 @@
 import React from 'react'
 import {Button} from '@mantine/core'
 
-interface QuizAnswerButtonProps {
+export interface QuizAnswerButtonProps {
   text: string
   answerQuestion: React.MouseEventHandler<HTMLButtonElement>;
 }

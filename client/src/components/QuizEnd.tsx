@@ -1,11 +1,18 @@
-import {Card} from '@mantine/core' 
+import {Card,Title} from '@mantine/core' 
 
 
-const Quiz = () => {
+export interface QuizProps {
+	quizScore: number
+}
+
+const Quiz = ({quizScore}:QuizProps) => {
 	return(
-		//score
 		<div>
-			<p>your score</p>
+			<Card>
+				<Card.Section className="text-center">
+					<Title>Your Score: {quizScore*100}%</Title>
+				</Card.Section>
+			</Card>
 		</div>
 
 	)
