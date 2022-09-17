@@ -66,12 +66,11 @@ router.get('/kanjiquestions/:grade/:length',(req,res)=>{
 			options.push(
 				{optionName: incorrectKanji[randomIncorrectKanjiIndex].kanji, correct: false}
 			)
-			incorrectKanji.splice(index,1)
+			incorrectKanji.splice(randomIncorrectKanjiIndex,1)
 		}
 		options.push({optionName: kanjiObject.kanji, correct: true})
 
-		const randomQuestionType = randomElement(['readings_on','readings_kun','meanings'])
-
+		const randomQuestionType = randomElement(['readings_on','readings_kun','meanings'].filter((questionType)=>kanjiObject[questionType].length>0))
 		return({question: [randomQuestionType,randomElement(kanjiObject[randomQuestionType])], options: shuffle(options)})
 	}
 
