@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import FetchGradeKanji from './FetchGradeKanji'
-import FetchKanji from './FetchKanji'
 
 
 export interface QuestionProps {

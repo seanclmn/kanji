@@ -22,7 +22,7 @@ function QuizContainer() {
   const [stage,setStage]=useState("start")
   const [correct,setCorrect]=useState(0)
   console.log(levelquiz)
-  const questions = FetchQuizQuestions(parseFloat(String(levelquiz)),4)
+  const questions = FetchQuizQuestions(parseFloat(String(levelquiz)),10)
   console.log(questions)
 
   const startQuiz = () => {

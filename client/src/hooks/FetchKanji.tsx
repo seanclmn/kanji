@@ -1,15 +1,26 @@
 import {useEffect,useState} from 'react'
 
-function FetchKanji(kanji:string) {
 
-  interface dataResult {
-    kun_readings: string[]
-  }
+export interface DataResult {
+  strokes: Number,
+  grade: Number,
+  freq: Number,
+  jlpt_old: Number,
+  jlpt_new: Number,
+  meanings: [String],
+  readings_on: [String],
+  readings_kun: [String],
+  wk_level: Number,
+  wk_meanings: [String],
+  wk_readings_on: [String],
+  wk_readings_kun: [String],
+  wk_radicals: [String],
+  kanji: String
+}
 
-  const url = `https://kanjiapi.dev/v1/kanji/${kanji}`
-  const [kanjiData,setKanjiData]=useState<dataResult>({kun_readings: [""]})
-
-
+export const FetchKanji = (kanji:string) => {
+  const url = `http://localhost:8082/api/kanji/fullkanjilist/${kanji}`
+  const [kanjiData,setKanjiData]=useState<DataResult[]|null>(null)
   
   useEffect(()=>{
     const fetchData = async () =>{
@@ -24,7 +35,7 @@ function FetchKanji(kanji:string) {
     }
 
     fetchData().then((res)=>{
-      setKanjiData(res)
+      setKanjiData(res[0])
     })
   },[kanji])
 
@@ -32,5 +43,3 @@ function FetchKanji(kanji:string) {
     {kanjiData}
   )
 }
-
-export default FetchKanji

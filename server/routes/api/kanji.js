@@ -8,7 +8,7 @@ const Kanji = require('../../models/kanjimodel')
 
 
 
-// Suffle an Array
+// Shuffle an Array
 const shuffle = (array) => {
 	let currentIndex = array.length,  randomIndex;
 
@@ -43,6 +43,13 @@ router.get('/fullkanjilist/grade/:grade', (req,res)=>{
 	Kanji.find({"grade": req.params.grade})
 		.then(kanji => res.json(kanji))
 		.catch(err => console.log(err.message))
+})
+
+router.get('/fullkanjilist/:kanji', (req,res)=>{
+	Kanji.find({"kanji":req.params.kanji})
+		.then(kanji=>res.json(kanji))
+		.catch(err => console.log(kanji))
+
 })
 
 router.get('/kanjiquestions/:grade/:length',(req,res)=>{

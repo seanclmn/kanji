@@ -6,6 +6,9 @@ import Home from './pages/Home'
 import logo from './logo.svg';
 import './App.css';
 import QuizPage from './pages/QuizPage';
+import KanjiDictionaryPage from './pages/KanjiDictionaryPage'
+import KanjiDictionary from './components/KanjiDictionary'
+
 
 function App() {
   return (
@@ -16,7 +19,7 @@ function App() {
         <Route path="/quiz" element={<QuizPage/>}>
           <Route path=":levelquiz" element={<QuizContainer/>}/>
         </Route>          
-
+				<Route path="dictionary" element={<KanjiDictionaryPage/>}/>
       </Route>
     </Routes>
   );
