@@ -47,8 +47,8 @@ router.get('/fullkanjilist/grade/:grade', (req,res)=>{
 
 router.get('/fullkanjilist/:kanji', (req,res)=>{
 	Kanji.find({"kanji":req.params.kanji})
-		.then(kanji=>res.json(kanji))
-		.catch(err => console.log(kanji))
+		.then(kanji=>res.json(kanji)[0])
+		.catch(err => console.log(err))
 
 })
 

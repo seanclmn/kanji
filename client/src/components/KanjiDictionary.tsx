@@ -7,9 +7,8 @@ const KanjiDictionary = () => {
 	const [searchKanji,setSearchKanji]=useState('')
 	const ref = useRef<HTMLInputElement>(null);
 
-	// const newKanji = FetchKanji(textInputValue).kanjiData
-	// console.log(newKanji)
 	const newKanji = FetchKanji(searchKanji).kanjiData
+	
 
 	const submitKanji = () => {
 		setSearchKanji(textInputValue)
@@ -38,7 +37,15 @@ const KanjiDictionary = () => {
 					onClick={submitKanji}
 					>Look up</Button>
 			</div>
-			<p>this is a dictionary. boi.</p>
+
+			<div>
+				<p>
+					Kanji: {newKanji && newKanji[0].kanji}
+				</p>
+				<ul>
+					Meanings: {newKanji && newKanji[0].meanings.map((meaning,index)=><li key={index}>{meaning}</li>)}
+				</ul>
+			</div>
 		</div>
 
 

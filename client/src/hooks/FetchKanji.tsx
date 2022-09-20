@@ -35,7 +35,7 @@ export const FetchKanji = (kanji:string) => {
     }
 
     fetchData().then((res)=>{
-      setKanjiData(res[0])
+      setKanjiData(res)
     })
   },[kanji])
 
