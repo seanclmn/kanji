@@ -11,6 +11,7 @@ const KanjiDictionary = () => {
 	
 
 	const submitKanji = () => {
+		console.log("NEW VALUE PUSHED")
 		setSearchKanji(textInputValue)
 	}
 

@@ -34,9 +34,12 @@ export const FetchKanji = (kanji:string) => {
       }
     }
 
-    fetchData().then((res)=>{
+    if(kanji.length>0)  {
+      fetchData().then((res)=>{
+      console.log(res)
       setKanjiData(res)
     })
+  }
   },[kanji])
 
   return (
