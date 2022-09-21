@@ -4,6 +4,7 @@ import { Link, Outlet } from 'react-router-dom'
 import QuizCard from '../components/QuizCard'
 import QuizzesPage from './QuizzesPage'
 import NavbarSection from '../components/NavbarSection'
+import LandingPage from './LandingPage';
 
 
 
@@ -35,8 +36,8 @@ const Home = () =>{
               </Link>
             </div>
             <Navbar.Section >
-              <NavbarSection title={"Quiz"} link="/quizzes"/>
-              <NavbarSection title={"Dictionary"} link="/dictionary"/>
+              <NavbarSection title={"Quiz"} link="/home/quizzes"/>
+              <NavbarSection title={"Lookup"} link="/home/dictionary"/>
             </Navbar.Section>
 
           </Navbar>

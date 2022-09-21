@@ -12,7 +12,7 @@ const QuizesPage = () => {
 
 	return(
 		<div className="pt-5">
-			{Quizzes.map((level)=> <QuizCard key={level.id} link={`/quiz/${level.level}`} level={String(level.level)} color={level.color} progress={level.progress}/>)}
+			{Quizzes.map((level)=> <QuizCard key={level.id} link={`/home/quiz/${level.level}`} level={String(level.level)} color={level.color} progress={level.progress}/>)}
 		</div>
 	)
 }
