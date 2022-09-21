@@ -14,7 +14,7 @@
 	"routes": [
 		{
 			"src": "/(.*)",
-			"dset":"app.js"
+			"dest":"app.js"
 		}	
 	]
 }
