@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Server for kanji quiz app",
   "main": "app.js",
-  "scripts": {
+  "engines":{
+		"node": "14.x"
+		
+	},
+	"scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "app": "nodemon app.js"
