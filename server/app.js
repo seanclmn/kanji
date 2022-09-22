@@ -32,10 +32,5 @@ app.get('/', (req, res) => res.send('noice!'));
 
 const port = process.env.PORT || 8082;
 
-//use routes
-
-app.use('/api/kanji',kanji)
-
-
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
