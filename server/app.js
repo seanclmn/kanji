@@ -12,9 +12,9 @@ app.use('/api/kanji',kanji)
 
 //Serve static files
 
-app.use(express.static(path.join(__dirname, './build/')))
+app.use(express.static(__dirname+'/build'))
 app.get('*', function(req, res) {
-  res.sendFile('index.html', {root: path.join(__dirname, './build/')});
+  res.sendFile('index.html', {root: __dirname+'/build'});
 });
 
 app.use(bodyParser.urlencoded({extended: true}))
