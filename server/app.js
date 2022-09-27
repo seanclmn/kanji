@@ -12,10 +12,10 @@ app.use('/api/kanji',kanji)
 
 //Serve static files
 
-app.use(express.static(__dirname+'/../client/build'))
-app.get('*', function(req, res) {
-  res.sendFile('index.html', {root: __dirname+'/../client/build'});
-});
+//app.use(express.static(__dirname+'/../client/build'))
+//app.get('*', function(req, res) {
+//  res.sendFile('index.html', {root: __dirname+'/../client/build'});
+//});
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
