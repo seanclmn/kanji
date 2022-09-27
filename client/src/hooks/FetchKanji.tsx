@@ -19,7 +19,7 @@ export interface DataResult {
 }
 
 export const FetchKanji = (kanji:string) => {
-  const url = `http://localhost:8082/api/kanji/fullkanjilist/${kanji}`
+  const url = `${process.env.REACT_APP_API_URL}/api/kanji/fullkanjilist/${kanji}`
   const [kanjiData,setKanjiData]=useState<DataResult[]|null>(null)
   
   useEffect(()=>{

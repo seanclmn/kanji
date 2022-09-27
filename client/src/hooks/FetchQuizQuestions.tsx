@@ -23,7 +23,7 @@ export const FetchQuizQuestions = (kanjiLevel:number,numberOfQuestions:number) =
   useEffect(()=>{
     const fetchQuestions = async () => {
       try{
-        const result = await axios.get(`http://localhost:8082/api/kanji/kanjiquestions/${kanjiLevel}/${numberOfQuestions}`)
+        const result = await axios.get(`${process.env.REACT_APP_API_URL}/api/kanji/kanjiquestions/${kanjiLevel}/${numberOfQuestions}`)
 
         const data = await result.data
         return data
