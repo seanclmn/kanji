@@ -7,6 +7,12 @@ import reportWebVitals from './reportWebVitals';
 import {store} from './app/store'
 import {Provider} from 'react-redux'
 
+if (process.env.NODE_ENV === 'production') {
+  console.log = () => {}
+  console.error = () => {}
+  console.debug = () => {}
+}
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
