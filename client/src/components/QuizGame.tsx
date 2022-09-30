@@ -52,14 +52,15 @@ function QuizGame({questions, correct, endQuiz, setCorrect}:QuizGameProps) {
     if(answered){
       
       setAnswered(false)
-      let newColors = colors
+			const correctIndex = questions[questionIndex].options.findIndex(option=>option.correct)
+			let newColors = colors
       if(questions[questionIndex].options[index].correct){
         newColors[index] = "green"
         setCorrect(correct+1)
         }
       else
         newColors[index] = "red"
-
+				newColors[correctIndex] = "green"	
       setColors(newColors)
     }
   }
