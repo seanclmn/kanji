@@ -1,14 +1,10 @@
-// @ts-nocheck
 import React,{useState} from 'react'
 import {useParams} from 'react-router-dom'
 import QuizAnswerButton from './QuizAnswerButton'
-
-import FetchKanji from '../hooks/FetchKanji'
-
 import {Button} from '@mantine/core'
 
 export interface QuizGameProps {
-  questions: Question[]|string[]
+  questions: Question[]
   correct: number
   endQuiz: Function
   setCorrect: Function
@@ -21,7 +17,7 @@ export interface Question{
 
 export interface OptionProps {
   correct: boolean
-  optionName: string
+  option: string
 }
 
 function QuizGame({questions, correct, endQuiz, setCorrect}:QuizGameProps) {
@@ -69,14 +65,14 @@ function QuizGame({questions, correct, endQuiz, setCorrect}:QuizGameProps) {
     <div className="mx-auto w-[70%]">
       {phraseQuestion()}
       <div className="grid grid-cols-2 gap-4">
-        {questions[questionIndex].options.map((option,index)=> 
+        {questions[questionIndex].options.map((optionObject,index)=> 
           <Button 
             onClick={()=>(answerQuestion(index))}
             color={colors[index]}
             key={index}
             size="md"
             >
-              {option.optionName}
+              {optionObject.option}
             </Button>)}
       </div>
  

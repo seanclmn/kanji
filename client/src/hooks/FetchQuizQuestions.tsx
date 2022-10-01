@@ -2,22 +2,21 @@ import axios from 'axios'
 // Hooks
 import { useEffect } from 'react'
 import { useState } from 'react'
-import FetchGradeKanji from './FetchGradeKanji'
 
 
 export interface QuestionProps {
-  question: string
-  answers: AnswerProps[]
+  question: string[]
+  options: OptionProps[]
 }
 
-export interface AnswerProps {
+export interface OptionProps {
   option: string
   correct:boolean
 }
 
 
 export const FetchQuizQuestions = (kanjiLevel:number,numberOfQuestions:number) => {
-  const [quizQuestions,setQuizQuestions]=useState<string[]>([])
+  const [quizQuestions,setQuizQuestions]=useState<QuestionProps[]>([])
 
 
   useEffect(()=>{
