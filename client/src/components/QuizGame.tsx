@@ -1,6 +1,4 @@
-import React,{useState} from 'react'
-import {useParams} from 'react-router-dom'
-import QuizAnswerButton from './QuizAnswerButton'
+import {useState} from 'react'
 import {Button} from '@mantine/core'
 
 export interface QuizGameProps {

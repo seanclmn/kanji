@@ -4,9 +4,7 @@ import changeScore from '../features/kanji/kanjiSlice'
 export const store = configureStore({
 	reducer: {
 		userData: changeScore
-
 	}
-	
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

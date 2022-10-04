@@ -14,16 +14,22 @@ const QuizCard = ({level, progress, color, link}: QuizCardProps) =>{
 
   return(
 		<Link to={link} rel="prefetch" className='no-underline'>
-		  <Card 
+			<Card 
 				withBorder 
 				p="xl" 
 				radius="md"
-				className='mb-4'
+				className='mb-4 flex flex-row justify-left px-5 py-0 h-[200px]'
 				>
-				<div></div>
-
-				<div className="flex flex-col items-center w-[100px]">
-					<Text>Kanji Level {level}</Text>
+				<div
+					className="w-[150px] text-center"
+					>
+					<Text>	
+					GRADE {level}
+					</Text>
+					<img className="h-[100%] "src={process.env.PUBLIC_URL+`/grade_${level}.png`} alt={`/grade_${level}.png`} />
+				</div>
+				<div className="flex flex-col items-center w-[150px]">
+					<Text>HIGH SCORE</Text>
 					<RingProgress
 						sections={[{ value: progress, color: color }]}
 						label={
