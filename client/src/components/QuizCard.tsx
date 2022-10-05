@@ -36,7 +36,7 @@ const QuizCard = ({level, progress, color, link}: QuizCardProps) =>{
 					<Card className='flex flex-col items-center bg-transparent'>
 						<Text size="lg" color="white">HIGH SCORE</Text>
 						<RingProgress
-							sections={[{ value: progress, color: "white" },{ value: 100-progress, color: "#dedede60" }]}
+							sections={[{ value: progress, color: "white" },{ value: 100-progress, color: color }]}
 							label={
 								<Text color="white" weight={700} align="center" size="xl">
 									{progress}%
