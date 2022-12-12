@@ -36,8 +36,8 @@ const Home = () =>{
               </Link>
             </div>
             <Navbar.Section >
-              <NavbarSection title={"Quiz"} link="/home/quizzes"/>
-              <NavbarSection title={"Lookup"} link="/home/dictionary"/>
+              <NavbarSection title={"Quiz"} link="/quizzes"/>
+              <NavbarSection title={"Lookup"} link="/dictionary"/>
             </Navbar.Section>
 
           </Navbar>

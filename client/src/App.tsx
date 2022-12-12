@@ -14,15 +14,12 @@ import LandingPage from './pages/LandingPage';
 function App() {
   return (
     <Routes>
-
-      <Route path="/" element={<LandingPage/>}/>
-      <Route path="/home" element={<Home/>}>
-        <Route path="/home/quizzes" element={<QuizzesPage/>}/>
-
-        <Route path="/home/quiz" element={<QuizPage/>}>
+      <Route path="/" element={<Home/>}>
+        <Route path="/quizzes" element={<QuizzesPage/>}/>
+        <Route path="/quiz" element={<QuizPage/>}>
           <Route path=":levelquiz" element={<QuizContainer/>}/>
         </Route>          
-				<Route path="/home/dictionary" element={<KanjiDictionaryPage/>}/>
+				<Route path="/dictionary" element={<KanjiDictionaryPage/>}/>
       </Route>
     </Routes>
   );
