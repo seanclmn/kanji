@@ -1,6 +1,6 @@
 # kanji
 
-Draft version is deployed on vercel: https://kanji-ecru.vercel.app/home/quizzes
+Draft version is deployed on vercel: https://kanji-ecru.vercel.app/quizzes
 
 ## Description
 
